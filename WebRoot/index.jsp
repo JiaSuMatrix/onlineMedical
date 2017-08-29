@@ -1,12 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!Doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>在线医疗平台</title>
+<meta charset="utf-8">
+<title>在线医疗</title>
+<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
 
+<body>
+	<div id = "wrapper">
+		<div id="header">
+        	<p id="intro">
+            	无需等待，在线预约
+            </p>
+            <div id="rl">
+            	<a href="">我是医生</a>|<a href="">我是患者</a>
+            </div>
+        </div>
+        <div id="content">
+        	<div id="img">
+            	<img src="${pageContext.request.contextPath}/images/logo.png"/>
+            </div>
+            <h1>足不出户，在线预约</h1>
+            <div id="search">
+            	<form>
+                	<input id="input" type="text" placeholder="输入医院名称、医生姓名、病情搜索"/>
+                    <a href=""><img id="img2" src="${pageContext.request.contextPath}/images/search.png" /></a>
+                </form>
+            </div>
+        </div>
+        <div id="footer">
+        	<div>
+                <h2>热门医生</h2>
+                <ul>
+                    <li><a href="">张三</a></li>
+                    <li><a href="">张三</a></li>
+                    <li><a href="">张三</a></li>
+                    <li><a href="">张三</a></li>
+                    <li><a href="">张三</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>热门医院</h2>
+                <ul>
+                    <li><a href="">浙江省第一医院</a></li>
+                    <li><a href="">浙江省第一医院</a></li>
+                    <li><a href="">浙江省第一医院</a></li>
+                    <li><a href="">浙江省第一医院</a></li>
+                    <li><a href="">浙江省第一医院</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>热门疾病</h2>
+                <ul>
+                    <li><a href="">感冒</a></li>
+                    <li><a href="">感冒</a></li>
+                    <li><a href="">感冒</a></li>
+                    <li><a href="">感冒</a></li>
+                    <li><a href="">感冒</a></li>
+                </ul>
+            </div>
+        </div>
+	</div>
 </body>
 </html>
