@@ -14,8 +14,8 @@
         	<p id="intro">
             	无需等待，在线预约
             </p>
-            <div id="rl">
-            	<a href="">我是医生</a>|<a href="">我是患者</a>
+             <div id="rl">
+            	<a href="${pageContext.request.contextPath}/login.jsp">登录</a>|<a href="${pageContext.request.contextPath}/doctorRegister.jsp">医生注册</a>|<a href="${pageContext.request.contextPath}/patientRegister.jsp">患者注册</a>
             </div>
         </div>
         <div id="content">
