@@ -14,16 +14,16 @@
             	无需等待，在线预约
             </p>
              <div id="rl">
-            	<a href="${pageContext.request.contextPath}/patientRegister.jsp">患者注册</a>
+            	<a href="${pageContext.request.contextPath}/patientRegisterPage.action">患者注册</a>
             </div>
         </div>
         <div id="content">
         	<div id="login">
                 <h2 id="h2">医生注册</h2>
-                <form action="">
-                    <input type="text" placeholder="请输入用户名" id="user" name="user"/>
+                <form action="${pageContext.request.contextPath}/doctorRegister.action" method="POST">
+                    <input type="text" placeholder="请输入用户名" id="user" name="username"/>
                     <input type="password" placeholder="请输入密码" id="password" name="password"/>
-                    <input type="repassword" placeholder="确认密码" id="repassword" name="repassword"/>
+                    <input type="password" placeholder="确认密码" id="repassword" name="repassword"/>
                     <input type="text" placeholder="请输入手机号" id="phone" name="phone"/>
                     <textarea id="description" name="description" placeholder="请输入主治方向"></textarea>
                     <input type="submit" value="注册" id="submit" name="submit"/>
