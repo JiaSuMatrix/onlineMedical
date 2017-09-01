@@ -1,12 +1,18 @@
 package cn.hdu.service;
 
 import cn.hdu.po.Doctor;
+import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Patient;
+import cn.hdu.po.PatientVo;
 
 public interface UserService {
 
-	void doctor_register(Doctor doctor);
+	void doctorRegister(Doctor doctor);
 
-	void patient_register(Patient patient);
+	void patientRegister(Patient patient);
+
+	Doctor doctorLogin(DoctorVo doctorVo);
+
+	Patient patientLogin(PatientVo patientVo);
 
 }

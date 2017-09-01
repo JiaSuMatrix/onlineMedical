@@ -15,8 +15,7 @@
             	无需等待，在线预约
             </p>
              <div id="rl">
-             <c:if test=""></c:if>
-            	<a href="${pageContext.request.contextPath}/loginPage.action">登录</a>|<a href="${pageContext.request.contextPath}/doctorRegisterPage.action">医生注册</a>|<a href="${pageContext.request.contextPath}/patientRegisterPage.action">患者注册</a>
+             <a href="${pageContext.request.contextPath}/doctorLoginPage.action">登录</a>|<a href="${pageContext.request.contextPath}/doctorRegisterPage.action">医生注册</a>|<a href="${pageContext.request.contextPath}/patientRegisterPage.action">患者注册</a>
             </div>
         </div>
         <div id="content">

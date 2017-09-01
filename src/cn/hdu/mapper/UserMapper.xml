@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.hdu.mapper.UserMapper">
-	<insert id="doctor_register" parameterType="doctor">
+	<insert id="doctorRegister" parameterType="doctor">
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
 			select uuid()
 		</selectKey>
@@ -12,12 +12,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{id},#{username},#{password},#{phone})
 	</insert>
 	
-	<insert id="patient_register" parameterType="patient">
+	<insert id="patientRegister" parameterType="patient">
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
 			select uuid()
 		</selectKey>
 		INSERT INTO patient(id,username,password,phone)
 		VALUES(#{id},#{username},#{password},#{phone})
 	</insert>
+	
+	<select id="doctorLogin" parameterType="doctorVo" resultType="doctor">
+		SELECT * FROM doctor WHERE username = #{doctor.username} AND password = #{doctor.password}
+	</select>
+	
+	<select id="patientLogin" parameterType="patientVo" resultType="patient">
+		SELECT * FROM patient WHERE username = #{patient.username} AND password = #{patient.password}
+	</select>
 </mapper>
 

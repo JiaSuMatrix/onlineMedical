@@ -7,7 +7,7 @@ a{ text-decoration:none;}
 
 #header{ height:50px; background:#F2F2F2;}
 #intro{ font-size:16px; color:#666; padding:16px 0 0 74px;}
-#rl{ position:absolute; left:1100px; top:16px;}
+#rl{ position:absolute; left:1000px; top:16px;}
 #rl a{ color:#000;font-size:18px; padding: 0 10px;}
 #rl a:hover{ color:#FF9500;}
 

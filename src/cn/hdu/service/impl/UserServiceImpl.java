@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import cn.hdu.mapper.UserMapper;
 import cn.hdu.po.Doctor;
+import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Patient;
+import cn.hdu.po.PatientVo;
 import cn.hdu.service.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -15,14 +17,33 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public void doctor_register(Doctor doctor) {
+	public void doctorRegister(Doctor doctor) {
 
-		userMapper.doctor_register(doctor);
+		userMapper.doctorRegister(doctor);
 	}
 
 	@Override
-	public void patient_register(Patient patient) {
+	public void patientRegister(Patient patient) {
 		
-		userMapper.patient_register(patient);
+		userMapper.patientRegister(patient);
 	}
+
+	@Override
+	public Doctor doctorLogin(DoctorVo doctorVo) {
+		Doctor doctor = userMapper.doctorLogin(doctorVo);
+		if(doctor!=null){
+			return doctor;
+		}
+		return null;
+	}
+
+	@Override
+	public Patient patientLogin(PatientVo patientVo) {
+		Patient patient = userMapper.patientLogin(patientVo);
+		if(patient!=null){
+			return patient;
+		}
+		return null;
+	}
+
 }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!Doctype html>
 <html>
 <head>
@@ -20,15 +20,29 @@
         </div>
         <div id="logincontent">
         	<div id="login">
-                <h2 id="h2">用户登录</h2>
-                <a class="forget" href="javascript:;">忘记密码？</a>
-                <form action="">
-                    <input type="text" placeholder="请输入用户名" id="user" name="user" value="${username }"/>
-                    <input type="password" placeholder="请输入密码" id="password" name="password"/>
-                    <input type="checkbox" id="checkbox" name="checkbox"/>
-                    <span class="remember">下次自动登录</span>
-                    <input type="submit" value="登录" id="submit" name="submit"/>
-                </form>
+        		<c:if test="${isPatient==null }">
+                	<h2 id="h2">医生登录</h2>
+	                <a class="forget" href="${pageContext.request.contextPath}/patientLoginPage.action?isPatient=isPatient">不是医生？患者登录</a>
+	                <form action="${pageContext.request.contextPath}/doctorLogin.action" method="POST">
+	                    <input type="text" placeholder="请输入用户名" id="user" name="doctor.username" value="${username }"/>
+	                    <input type="password" placeholder="请输入密码" id="password" name="doctor.password"/>
+	                    <input type="checkbox" id="checkbox" name="checkbox"/>
+	                    <span class="remember">下次自动登录</span>
+	                    <input type="submit" value="登录" id="submit" name="submit"/>
+	                </form>
+                </c:if>
+                
+                <c:if test="${isPatient!=null }">
+                	<h2 id="h2">患者登录</h2>
+                	<a class="forget" href="${pageContext.request.contextPath}/doctorLoginPage.action">不是患者？医生登录</a>
+	                <form action="${pageContext.request.contextPath}/patientLogin.action" method="POST">
+	                    <input type="text" placeholder="请输入用户名" id="user" name="patient.username" value="${username }"/>
+	                    <input type="password" placeholder="请输入密码" id="password" name="patient.password"/>
+	                    <input type="checkbox" id="checkbox" name="checkbox"/>
+	                    <span class="remember">下次自动登录</span>
+	                    <input type="submit" value="登录" id="submit" name="submit"/>
+	                </form>
+                </c:if>
     		</div>
         </div>
         <div id="loginfooter">
