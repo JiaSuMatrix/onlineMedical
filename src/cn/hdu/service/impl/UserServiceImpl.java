@@ -3,6 +3,7 @@ package cn.hdu.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.UserMapper;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
@@ -17,19 +18,19 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public void doctorRegister(Doctor doctor) {
+	public void doctorRegister(Doctor doctor) throws DaoException {
 
 		userMapper.doctorRegister(doctor);
 	}
 
 	@Override
-	public void patientRegister(Patient patient) {
+	public void patientRegister(Patient patient) throws DaoException {
 		
 		userMapper.patientRegister(patient);
 	}
 
 	@Override
-	public Doctor doctorLogin(DoctorVo doctorVo) {
+	public Doctor doctorLogin(DoctorVo doctorVo)  throws DaoException{
 		Doctor doctor = userMapper.doctorLogin(doctorVo);
 		if(doctor!=null){
 			return doctor;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Patient patientLogin(PatientVo patientVo) {
+	public Patient patientLogin(PatientVo patientVo) throws DaoException{
 		Patient patient = userMapper.patientLogin(patientVo);
 		if(patient!=null){
 			return patient;

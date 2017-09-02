@@ -7,6 +7,7 @@ public class Doctor {
 	private Integer age;
 	private String password;
 	private String phone;
+	private String mail;
 	private String description;
 	private Integer heat;
 	private Hospital hospital;
@@ -73,5 +74,13 @@ public class Doctor {
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 }

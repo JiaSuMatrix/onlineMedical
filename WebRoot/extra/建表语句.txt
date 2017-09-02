@@ -14,6 +14,7 @@ username        VARCHAR(12)     NOT NULL,
 password        VARCHAR(24)     NOT NULL,
 age             INT          NULL,
 phone           VARCHAR(16)     NOT NULL,
+mail            VARCHAR(36)     NULL,
 hospital_id     VARCHAR(36)     NULL,
 description     VARCHAR(256)    NULL,
 heat            INT          NULL,
@@ -27,6 +28,7 @@ username        VARCHAR(12)     NOT NULL,
 password        VARCHAR(24)     NOT NULL,
 age             INT             NULL,
 phone           VARCHAR(16)     NOT NULL,
+mail            VARCHAR(36)     NULL,
 heat            INT             NULL
 );
 

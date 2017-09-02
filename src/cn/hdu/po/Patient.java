@@ -7,6 +7,7 @@ public class Patient {
 	private Integer age;
 	private String password;
 	private String phone;
+	private String mail;
 	private Integer heat;
 
 	public String getId() {
@@ -55,6 +56,14 @@ public class Patient {
 
 	public void setHeat(Integer heat) {
 		this.heat = heat;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 }

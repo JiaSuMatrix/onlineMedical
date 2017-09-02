@@ -22,30 +22,47 @@ public class UserController {
 	@Qualifier("userService")
 	private UserService userService;
 
+	@SuppressWarnings("finally")
 	@RequestMapping("/doctorRegister.action")
 	public ModelAndView doctorRegister(Doctor doctor) {
-		userService.doctorRegister(doctor);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("message",
-				"<meta http-equiv='refresh' content='2;url=/onlineMedical/doctorLoginPage.action?username="
-						+ doctor.getUsername()
-						+ "'/>恭喜您注册成功，将在2秒后跳转到登录，如果没有跳转，请点击<a href='/doctorLoginPage.action?username="
-						+ doctor.getUsername() + "'>去登录</a>");
-		modelAndView.setViewName("message");
-		return modelAndView;
+		try {
+			userService.doctorRegister(doctor);
+			modelAndView.addObject("message",
+					"<meta http-equiv='refresh' content='2;url=/onlineMedical/doctorLoginPage.action?username="
+							+ doctor.getUsername()
+							+ "'/>恭喜您注册成功，将在2秒后跳转到登录，如果没有跳转，请点击<a href='/doctorLoginPage.action?username="
+							+ doctor.getUsername() + "'>去登录</a>");
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+			
+		}finally {
+			modelAndView.setViewName("message");
+			return modelAndView;
+		}
+
 	}
 
+	@SuppressWarnings("finally")
 	@RequestMapping("/patientRegister.action")
 	public ModelAndView patientRegister(Patient patient) {
-		userService.patientRegister(patient);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("message",
-				"<meta http-equiv='refresh' content='2;url=/onlineMedical/patientLoginPage.action?isPatient=isPatient&username="
-						+ patient.getUsername()
-						+ "'/>恭喜您注册成功，将在2秒后跳转到登录，如果没有跳转，请点击<a href='/patientLoginPage.action?isPatient=isPatient&username="
-						+ patient.getUsername() + "'>去登录</a>");
-		modelAndView.setViewName("message");
-		return modelAndView;
+		try {
+			userService.patientRegister(patient);
+			modelAndView.addObject("message",
+					"<meta http-equiv='refresh' content='2;url=/onlineMedical/patientLoginPage.action?isPatient=isPatient&username="
+							+ patient.getUsername()
+							+ "'/>恭喜您注册成功，将在2秒后跳转到登录，如果没有跳转，请点击<a href='/patientLoginPage.action?isPatient=isPatient&username="
+							+ patient.getUsername() + "'>去登录</a>");
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+		}finally {
+			modelAndView.setViewName("message");
+			return modelAndView;
+		}
+
 	}
 
 	@RequestMapping("/doctorRegisterPage.action")
@@ -75,29 +92,41 @@ public class UserController {
 
 	@RequestMapping("/doctorLogin.action")
 	public String doctorLogin(Model model, HttpSession httpSession, DoctorVo doctorVo) {
-		Doctor doctor = userService.doctorLogin(doctorVo);
-		if (doctor != null) {
-			model.addAttribute("username", doctor.getUsername());
-			httpSession.setAttribute("doctor", doctor);
-			return "doctor";
-		}else{
-			model.addAttribute("message", "用户名或密码错误，请正确填写！！！");
+		try {
+			Doctor doctor = userService.doctorLogin(doctorVo);
+			if (doctor != null) {
+				model.addAttribute("doctor", doctor);
+				httpSession.setAttribute("doctor", doctor);
+				return "doctor";
+			} else {
+				model.addAttribute("message", "用户名或密码错误，请正确填写！！！");
+				return "message";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "数据库操作异常，请联系管理员！");
 			return "message";
 		}
-		
+
 	}
 
 	@RequestMapping("/patientLogin.action")
 	public String patientLogin(Model model, HttpSession httpSession, PatientVo patientVo) {
-		Patient patient = userService.patientLogin(patientVo);
-		if (patient != null) {
-			model.addAttribute("username", patient.getUsername());
-			httpSession.setAttribute("patient", patient);
-			return "patient";
-		}else{
-			model.addAttribute("message", "用户名或密码错误，请正确填写！！！");
+		try {
+			Patient patient = userService.patientLogin(patientVo);
+			if (patient != null) {
+				model.addAttribute("patient", patient);
+				httpSession.setAttribute("patient", patient);
+				return "patient";
+			} else {
+				model.addAttribute("message", "用户名或密码错误，请正确填写！！！");
+				return "message";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "数据库操作异常，请联系管理员！");
 			return "message";
 		}
-		
+
 	}
 }
