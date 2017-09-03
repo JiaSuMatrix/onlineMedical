@@ -27,5 +27,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="patientLogin" parameterType="patientVo" resultType="patient">
 		SELECT * FROM patient WHERE username = #{patient.username} AND password = #{patient.password}
 	</select>
+	
+	<select id="findPatientById" parameterType="string" resultType="patient">
+		SELECT * FROM patient WHERE id = #{id}
+	</select>
+	
+	<select id="findDoctorById" parameterType="string" resultType="doctor">
+		SELECT * FROM doctor WHERE id = #{id}
+	</select>
+	
+	<update id="updatePatient" parameterType="patient">
+		UPDATE patient SET username = #{username},age = #{age},phone = #{phone},mail = #{mail} WHERE id = #{id}
+	</update>
+	
+	<update id="updateDoctor" parameterType="doctor">
+		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},description = #{description},mail = #{mail} WHERE id = #{id}
+	</update>
 </mapper>
 

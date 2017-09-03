@@ -36,8 +36,8 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
-			
-		}finally {
+
+		} finally {
 			modelAndView.setViewName("message");
 			return modelAndView;
 		}
@@ -58,7 +58,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
-		}finally {
+		} finally {
 			modelAndView.setViewName("message");
 			return modelAndView;
 		}
@@ -126,6 +126,71 @@ public class UserController {
 			e.printStackTrace();
 			model.addAttribute("message", "数据库操作异常，请联系管理员！");
 			return "message";
+		}
+	}
+
+	@RequestMapping("/doctorEditPage.action")
+	public String doctorEditPage(HttpSession httpSession, Model model, String editPage) {
+		Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
+		if (doctor != null) {
+			model.addAttribute("doctor", doctor);
+		}
+		model.addAttribute("editPage", editPage);
+		return "doctor";
+	}
+
+	@RequestMapping("/patientEditPage.action")
+	public String patientEditPage(HttpSession httpSession, Model model, String editPage) {
+		Patient patient = (Patient) httpSession.getAttribute("patient");
+		if (patient != null) {
+			model.addAttribute("patient", patient);
+		}
+		model.addAttribute("editPage", editPage);
+		return "patient";
+	}
+
+	@RequestMapping("/updatePatient.action")
+	public ModelAndView updatePatient(HttpSession httpSession, Patient patient) {
+		ModelAndView modelAndView = new ModelAndView();
+		try {
+			Patient p = (Patient) httpSession.getAttribute("patient");
+			patient.setId(p.getId());
+			userService.updatePatient(patient);
+			Patient fullPatient = userService.findPatientById(p.getId());
+			if (fullPatient != null) {
+				httpSession.removeAttribute("patient");
+				httpSession.setAttribute("patient", fullPatient);
+			}
+			modelAndView.setViewName("patient");
+			return modelAndView;
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+			modelAndView.setViewName("message");
+			return modelAndView;
+		}
+
+	}
+	
+	@RequestMapping("/updateDoctor.action")
+	public ModelAndView updateDoctor(HttpSession httpSession, Doctor doctor) {
+		ModelAndView modelAndView = new ModelAndView();
+		try {
+			Doctor d = (Doctor) httpSession.getAttribute("doctor");
+			doctor.setId(d.getId());
+			userService.updateDoctor(doctor);
+			Doctor fullDoctor = userService.findDoctorById(d.getId());
+			if (fullDoctor != null) {
+				httpSession.removeAttribute("doctor");
+				httpSession.setAttribute("doctor", fullDoctor);
+			}
+			modelAndView.setViewName("doctor");
+			return modelAndView;
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+			modelAndView.setViewName("message");
+			return modelAndView;
 		}
 
 	}

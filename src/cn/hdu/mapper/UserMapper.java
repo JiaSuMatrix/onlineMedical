@@ -16,4 +16,12 @@ public interface UserMapper {
 
 	Patient patientLogin(PatientVo patientVo) throws DaoException;
 
+	void updatePatient(Patient patient) throws DaoException;
+
+	Patient findPatientById(String id) throws DaoException;
+
+	void updateDoctor(Doctor doctor) throws DaoException;
+
+	Doctor findDoctorById(String id)  throws DaoException;
+
 }

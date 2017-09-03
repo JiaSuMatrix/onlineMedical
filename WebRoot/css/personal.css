@@ -21,7 +21,8 @@ a{ text-decoration:none;}
 #edit{ position:absolute; left:900px; top:162px;}
 #edit a{ color:#666;font-size:16px; padding: 0 10px;}
 #edit a:hover{ color:#ff9500;}
-
+#edit #submit{width:114px; height:52px;  border:none; background:none; background:url(../images/login_btn.png) no-repeat;  cursor:pointer; color:#fff; font-size:16px; font-weight:bold; letter-spacing:8px; position:relative; top:300px;}
+#personalTable input{width:300px;height:36px; border:2px solid #099; border-radius:6px; text-indent:10px;outline:none; font-size:14px; }
 #footer{ height:50px; background:#f2f2f2;}
 
 

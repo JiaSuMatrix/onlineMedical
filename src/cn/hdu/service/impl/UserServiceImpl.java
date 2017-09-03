@@ -47,4 +47,33 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	@Override
+	public void updatePatient(Patient patient) throws DaoException {
+		userMapper.updatePatient(patient);
+		
+	}
+
+	@Override
+	public Patient findPatientById(String id) throws DaoException {
+		Patient patient = userMapper.findPatientById(id);
+		if(patient!=null){
+			return patient;
+		}
+		return null;
+	}
+
+	@Override
+	public void updateDoctor(Doctor doctor) throws DaoException {
+		 userMapper.updateDoctor(doctor);
+	}
+
+	@Override
+	public Doctor findDoctorById(String id) throws DaoException {
+		Doctor doctor = userMapper.findDoctorById(id);
+		if(doctor!=null){
+			return doctor;
+		}
+		return null;
+	}
+
 }
