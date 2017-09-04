@@ -16,7 +16,9 @@
             </p>
              <div id="rl">
            
-            <a href="${pageContext.request.contextPath}/doctorLoginPage.action">登录</a>|<a href="${pageContext.request.contextPath}/doctorRegisterPage.action">医生注册</a>|<a href="${pageContext.request.contextPath}/patientRegisterPage.action">患者注册</a>
+            <c:if test="${doctor == null && patient == null }"><a href="${pageContext.request.contextPath}/doctorLoginPage.action">登录</a>|<a href="${pageContext.request.contextPath}/doctorRegisterPage.action">医生注册</a>|<a href="${pageContext.request.contextPath}/patientRegisterPage.action">患者注册</a></c:if>
+            <c:if test="${doctor != null }"><a href="${pageContext.request.contextPath}/indexToDoctor.action">${doctor.username }的个人中心</a>|<a href="${pageContext.request.contextPath}/doctorLogout.action">注销</a></c:if>
+            <c:if test="${patient != null }"><a href="${pageContext.request.contextPath}/indexToPatient.action">${patient.username }的个人中心</a>|<a href="${pageContext.request.contextPath}/patientLogout.action">注销</a></c:if>
             </div>
         </div>
         <div id="content">

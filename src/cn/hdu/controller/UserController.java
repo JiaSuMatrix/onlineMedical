@@ -29,9 +29,9 @@ public class UserController {
 		try {
 			userService.doctorRegister(doctor);
 			modelAndView.addObject("message",
-					"<meta http-equiv='refresh' content='2;url=/onlineMedical/doctorLoginPage.action?username="
+					"<meta http-equiv='refresh' content='3;url=/onlineMedical/doctorLoginPage.action?username="
 							+ doctor.getUsername()
-							+ "'/>恭喜您注册成功，将在2秒后跳转到登录，如果没有跳转，请点击<a href='/doctorLoginPage.action?username="
+							+ "'/>将在3秒后跳转到登录，如果没有跳转，请点击<a href='/doctorLoginPage.action?username="
 							+ doctor.getUsername() + "'>去登录</a>");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,6 +110,19 @@ public class UserController {
 
 	}
 
+	@RequestMapping("/indexToDoctor.action")
+	public String indexToDoctor(Model model, HttpSession httpSession) {
+		Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
+		if (doctor != null) {
+			model.addAttribute("doctor", doctor);
+			return "doctor";
+		} else {
+			model.addAttribute("message",
+					"登录失败，重新登录！！！<meta http-equiv='refresh' content='3;url=/onlineMedical/doctorLoginPage.action'/>将在3秒后跳转到登录，如果没有跳转，请点击<a href='/doctorLoginPage.action'>去登录</a>");
+			return "message";
+		}
+	}
+
 	@RequestMapping("/patientLogin.action")
 	public String patientLogin(Model model, HttpSession httpSession, PatientVo patientVo) {
 		try {
@@ -125,6 +138,19 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("message", "数据库操作异常，请联系管理员！");
+			return "message";
+		}
+	}
+
+	@RequestMapping("/indexToPatient.action")
+	public String indexToPatient(Model model, HttpSession httpSession) {
+		Patient patient = (Patient) httpSession.getAttribute("patient");
+		if (patient != null) {
+			model.addAttribute("patient", patient);
+			return "patient";
+		} else {
+			model.addAttribute("message",
+					"登录失败，重新登录！！！<meta http-equiv='refresh' content='3;url=/onlineMedical/patientLoginPage.action?isPatient=isPatient'/>将在3秒后跳转到登录，如果没有跳转，请点击<a href='/patientLoginPage.action?isPatient=isPatient'>去登录</a>");
 			return "message";
 		}
 	}
@@ -171,7 +197,7 @@ public class UserController {
 		}
 
 	}
-	
+
 	@RequestMapping("/updateDoctor.action")
 	public ModelAndView updateDoctor(HttpSession httpSession, Doctor doctor) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -193,5 +219,17 @@ public class UserController {
 			return modelAndView;
 		}
 
+	}
+
+	@RequestMapping("/patientLogout.action")
+	public String patientLogout(HttpSession session) {
+		session.invalidate();
+		return "index";
+	}
+
+	@RequestMapping("/doctorLogout.action")
+	public String doctorLogout(HttpSession session) {
+		session.invalidate();
+		return "index";
 	}
 }

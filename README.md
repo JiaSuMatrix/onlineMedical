@@ -13,4 +13,3 @@
 　　Spring MVC + Spring + Mybatis,数据库为Mysql
 
 
-[注]：此项目作为毕业设计使用

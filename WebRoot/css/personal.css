@@ -8,8 +8,10 @@ a{ text-decoration:none;}
 #header{ height:50px; background:#F2F2F2;}
 #intro{ font-size:16px; color:#666; padding:16px 0 0 74px;}
 #message{ position:absolute; left:1100px; top:16px;}
-#message a{ color:#000;font-size:18px; padding: 0 10px;}
-#message a:hover{ color:#FF9500;}
+#message a,#intro a{ color:#000;font-size:18px; padding: 0 10px;}
+#message a:hover,#intro a:hover{ color:#FF9500;}
+
+#user-error,#age-error,#mail-error,#phone-error,#description-error{ color:red; padding-left: 10px;}
 
 #content{height:500px; margin:0 auto; background:#099; padding-top:50px;}
 #personalMessage{ width:770px;height:450px;  margin:0 auto; background:url(../images/personal_bg.png) no-repeat;}

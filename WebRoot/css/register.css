@@ -29,3 +29,10 @@ h1{ font-size:20px; font-weight:normal; color:#FF9500; position:absolute; left:5
 #description{top:314px;font-family:"Arial Black", Gadget, sans-serif;}
 #submit{position:absolute; width:114px; height:52px;  border:none; background:none; background:url(../images/login_btn.png) no-repeat;  cursor:pointer; color:#fff; font-size:16px; font-weight:bold; letter-spacing:10px;}
 #submit{left:156px; top:370px;}
+
+#user-error,#password-error,#repassword-error,#phone-error,#description-error{ position: absolute; color: red; font-size: 16px;left:200px;}
+#user-error{  top:90px;}
+#password-error{ top:148px;}
+#repassword-error{top:206px;}
+#phone-error{top:262px;}
+#description-error{top:320px;font-family:"Arial Black", Gadget, sans-serif;}

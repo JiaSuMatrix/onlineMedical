@@ -24,9 +24,9 @@ h2{ font-size:20px; color:#383333; padding-bottom:20px;}
 #footer div li a{ color:#099;}
 #footer div li a:hover{ color:#FF9500;}
 
-
-
-
+#user-error,#password-error{ position: absolute; color: red; font-size: 16px;left:250px;}
+#user-error{  top:90px;}
+#password-error{ top:148px;}
 #login{ width:432px; height:290px; position:absolute; left:458px; top:160px; background:url(../images/login_bg.png)}
 #h2{ height:30px; line-height:30px;font-size:14px; font-weight:bold; color:#666; position:absolute; left:24px;top:36px;}
 .forget{ text-decoration:none;position:absolute; left:274px;top:34px; height:30px; line-height:30px;font-size:12px; color:#999;}

@@ -6,6 +6,58 @@
 <meta charset="utf-8">
 <title>医生注册页面</title>
 <link href="${pageContext.request.contextPath}/css/register.css" rel="stylesheet" type="text/css"/>
+	<script src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+    <script type="text/javascript">
+    $().ready(function() {
+    	// 在键盘按下并释放及提交后验证提交表单
+    	  $("#form").validate({
+    	    rules: {
+    	      username: {
+    	        required: true,
+    	        rangelength:[2,4]
+    	      },
+    	      password: {
+    	        required: true,
+    	        rangelength:[4,12]
+    	      },
+    	      repassword: {
+    	        required: true,
+    	        rangelength:[4,12],
+    	        equalTo: "#password"
+    	      },
+    	      phone: {
+    	        required: true
+    	      },
+    	      description: {
+    	        required: true,
+    	        minlength: 2
+    	      }
+    	      
+    	    },
+    	    messages: {
+    	      username: {
+    	        required: "姓名不能为空!",
+    	        rangelength:$.validator.format("用户名长度为{0}-{1}个字符"),
+    	      },
+    	      password: {
+    	        required: "密码不能为空!",
+    	        rangelength:$.validator.format("密码长度为{0}-{1}个字符")
+    	      },
+    	      repassword: {
+    	        required: "请输入确认密码",
+    	        rangelength:$.validator.format("密码长度为{0}-{1}个字符"),
+    	        equalTo: "两次密码输入不一致!"
+    	      },
+    	      phone: "手机号码不能为空!",
+    	      description: {
+      	        required: "简介不能为空！",
+      	        minlength: "不能少于2个字符！"
+      	      }
+    	    }
+    	});
+    });
+  </script>
 </head>
 <body>
 	<div id = "wrapper">
@@ -20,12 +72,12 @@
         <div id="content">
         	<div id="login">
                 <h2 id="h2">医生注册</h2>
-                <form action="${pageContext.request.contextPath}/doctorRegister.action" method="POST">
+                <form id="form" action="${pageContext.request.contextPath}/doctorRegister.action" method="POST">
                     <input type="text" placeholder="请输入用户名" id="user" name="username"/>
                     <input type="password" placeholder="请输入密码" id="password" name="password"/>
                     <input type="password" placeholder="确认密码" id="repassword" name="repassword"/>
                     <input type="text" placeholder="请输入手机号" id="phone" name="phone"/>
-                    <textarea id="description" name="description" placeholder="请输入主治方向"></textarea>
+                    <textarea id="description" name="description" placeholder="请输入个人简介"></textarea>
                     <input type="submit" value="注册" id="submit" name="submit"/>
                 </form>
     		</div>
