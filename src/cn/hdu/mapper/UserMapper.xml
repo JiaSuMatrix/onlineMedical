@@ -4,7 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.hdu.mapper.UserMapper">
+
+	<!-- 医生注册 -->
 	<insert id="doctorRegister" parameterType="doctor">
+	
+		<!-- 使用uuid生成主键-->
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
 			select uuid()
 		</selectKey>
@@ -12,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{id},#{username},#{password},#{phone})
 	</insert>
 	
+	<!-- 患者注册 -->
 	<insert id="patientRegister" parameterType="patient">
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
 			select uuid()
@@ -20,26 +25,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{id},#{username},#{password},#{phone})
 	</insert>
 	
+	<!-- 医生登录 -->
 	<select id="doctorLogin" parameterType="doctorVo" resultType="doctor">
 		SELECT * FROM doctor WHERE username = #{doctor.username} AND password = #{doctor.password}
 	</select>
 	
+	<!-- 患者登录 -->
 	<select id="patientLogin" parameterType="patientVo" resultType="patient">
 		SELECT * FROM patient WHERE username = #{patient.username} AND password = #{patient.password}
 	</select>
 	
+	<!-- 根据id查找患者 -->
 	<select id="findPatientById" parameterType="string" resultType="patient">
 		SELECT * FROM patient WHERE id = #{id}
 	</select>
 	
+	<!-- 根据id查找医生 -->
 	<select id="findDoctorById" parameterType="string" resultType="doctor">
 		SELECT * FROM doctor WHERE id = #{id}
 	</select>
 	
+	<!-- 更新患者信息 -->
 	<update id="updatePatient" parameterType="patient">
 		UPDATE patient SET username = #{username},age = #{age},phone = #{phone},mail = #{mail} WHERE id = #{id}
 	</update>
 	
+	<!-- 更新医生信息 -->
 	<update id="updateDoctor" parameterType="doctor">
 		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},description = #{description},mail = #{mail} WHERE id = #{id}
 	</update>

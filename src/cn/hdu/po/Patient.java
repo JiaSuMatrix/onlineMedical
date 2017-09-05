@@ -2,12 +2,19 @@ package cn.hdu.po;
 
 public class Patient {
 
+	// 唯一标识符，采用UUID
 	private String id;
+	// 用户名
 	private String username;
+	// 年龄
 	private Integer age;
+	// 密码
 	private String password;
+	// 手机号
 	private String phone;
+	// 邮箱地址
 	private String mail;
+	// 被查询热度指数
 	private Integer heat;
 
 	public String getId() {

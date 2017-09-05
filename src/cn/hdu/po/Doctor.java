@@ -1,15 +1,29 @@
 package cn.hdu.po;
 
+/**
+ * 
+ * @author wangye 医生实体
+ *
+ */
 public class Doctor {
 
+	// 唯一标识符，采用UUID
 	private String id;
+	// 用户名
 	private String username;
+	// 年龄
 	private Integer age;
+	// 密码
 	private String password;
+	// 手机号
 	private String phone;
+	// 邮箱地址
 	private String mail;
+	// 个人简介
 	private String description;
+	// 被查询热度指数
 	private Integer heat;
+	// 所属医院的实体
 	private Hospital hospital;
 
 	public String getId() {

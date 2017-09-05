@@ -14,16 +14,21 @@ import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
 import cn.hdu.service.UserService;
-
+/**
+ * 
+ * @author wangye
+ * 用于处理所有与用户有关的请求
+ *
+ */
 @Controller
 public class UserController {
 
 	@Autowired
-	@Qualifier("userService")
+	@Qualifier("userService") // 根据名称注入
 	private UserService userService;
 
 	@SuppressWarnings("finally")
-	@RequestMapping("/doctorRegister.action")
+	@RequestMapping("/doctorRegister.action") // 医生注册
 	public ModelAndView doctorRegister(Doctor doctor) {
 		ModelAndView modelAndView = new ModelAndView();
 		try {
@@ -45,7 +50,7 @@ public class UserController {
 	}
 
 	@SuppressWarnings("finally")
-	@RequestMapping("/patientRegister.action")
+	@RequestMapping("/patientRegister.action") // 患者注册
 	public ModelAndView patientRegister(Patient patient) {
 		ModelAndView modelAndView = new ModelAndView();
 		try {
@@ -65,24 +70,28 @@ public class UserController {
 
 	}
 
+	// 用于跳转到医生注册页面
 	@RequestMapping("/doctorRegisterPage.action")
 	public String doctorRegisterPage() {
 
 		return "doctorRegister";
 	}
 
+	// 用于跳转到患者注册页面
 	@RequestMapping("/patientRegisterPage.action")
 	public String patientRegisterPage() {
 
 		return "patientRegister";
 	}
 
+	// 用于跳转到医生登录页面
 	@RequestMapping("/doctorLoginPage.action")
 	public String doctorLoginPage(Model model, String username) {
 		model.addAttribute("username", username);
 		return "login";
 	}
 
+	// 用于跳转到患者登录页面
 	@RequestMapping("/patientLoginPage.action")
 	public String patientLoginPage(Model model, String username, String isPatient) {
 		model.addAttribute("username", username);
@@ -90,6 +99,7 @@ public class UserController {
 		return "login";
 	}
 
+	// 医生登录
 	@RequestMapping("/doctorLogin.action")
 	public String doctorLogin(Model model, HttpSession httpSession, DoctorVo doctorVo) {
 		try {
@@ -110,6 +120,7 @@ public class UserController {
 
 	}
 
+	// 用于从登录后首页调转到医生个人中心
 	@RequestMapping("/indexToDoctor.action")
 	public String indexToDoctor(Model model, HttpSession httpSession) {
 		Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
@@ -123,6 +134,7 @@ public class UserController {
 		}
 	}
 
+	// 患者登录
 	@RequestMapping("/patientLogin.action")
 	public String patientLogin(Model model, HttpSession httpSession, PatientVo patientVo) {
 		try {
@@ -142,6 +154,7 @@ public class UserController {
 		}
 	}
 
+	// 用于从登录后首页调转到患者个人中心
 	@RequestMapping("/indexToPatient.action")
 	public String indexToPatient(Model model, HttpSession httpSession) {
 		Patient patient = (Patient) httpSession.getAttribute("patient");
@@ -155,6 +168,7 @@ public class UserController {
 		}
 	}
 
+	// 用显示于医生用户完善个人资料页面，editpage参数不为空时显示编辑页面
 	@RequestMapping("/doctorEditPage.action")
 	public String doctorEditPage(HttpSession httpSession, Model model, String editPage) {
 		Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
@@ -165,6 +179,7 @@ public class UserController {
 		return "doctor";
 	}
 
+	// 用于显示患者用户完善个人资料页面，editpage参数不为空时显示编辑页面
 	@RequestMapping("/patientEditPage.action")
 	public String patientEditPage(HttpSession httpSession, Model model, String editPage) {
 		Patient patient = (Patient) httpSession.getAttribute("patient");
@@ -175,6 +190,7 @@ public class UserController {
 		return "patient";
 	}
 
+	// 更新完善患者个人信息
 	@RequestMapping("/updatePatient.action")
 	public ModelAndView updatePatient(HttpSession httpSession, Patient patient) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -198,6 +214,7 @@ public class UserController {
 
 	}
 
+	//// 更新完善医生个人信息
 	@RequestMapping("/updateDoctor.action")
 	public ModelAndView updateDoctor(HttpSession httpSession, Doctor doctor) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -221,12 +238,14 @@ public class UserController {
 
 	}
 
+	// 用户注销
 	@RequestMapping("/patientLogout.action")
 	public String patientLogout(HttpSession session) {
 		session.invalidate();
 		return "index";
 	}
 
+	// 用户注销
 	@RequestMapping("/doctorLogout.action")
 	public String doctorLogout(HttpSession session) {
 		session.invalidate();

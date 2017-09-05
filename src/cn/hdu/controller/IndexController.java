@@ -12,6 +12,12 @@ import cn.hdu.po.Patient;
 @Controller
 public class IndexController {
 
+	/**
+	 * 此方法用于从其他页面返回首页
+	 * @param model 模型，将数据带到页面
+	 * @param session 会话 存储用户信息
+	 * @return 视图名
+	 */
 	@RequestMapping("/index.action")
 	public String index(Model model, HttpSession session) {
 		Doctor doctor = (Doctor) session.getAttribute("doctor");

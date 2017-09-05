@@ -1,25 +1,38 @@
 package cn.hdu.exception;
 
+/**
+ * 
+ * @author 王冶
+ * 自定义异常，用于持久层异常处理
+ *
+ */
 @SuppressWarnings("serial")
 public class DaoException extends Exception {
 
 	public DaoException() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public DaoException(String arg0, Throwable arg1, boolean arg2, boolean arg3) {
-		super(arg0, arg1, arg2, arg3);
+	public DaoException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		// TODO Auto-generated constructor stub
 	}
 
-	public DaoException(String arg0, Throwable arg1) {
-		super(arg0, arg1);
+	public DaoException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
 	}
 
-	public DaoException(String arg0) {
-		super(arg0);
+	public DaoException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
 	}
 
-	public DaoException(Throwable arg0) {
-		super(arg0);
+	public DaoException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
 	}
+
+	
 }

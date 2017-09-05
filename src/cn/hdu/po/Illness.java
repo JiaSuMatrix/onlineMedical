@@ -1,9 +1,18 @@
 package cn.hdu.po;
 
+/**
+ * 疾病类实体
+ * 
+ * @author wangye
+ *
+ */
 public class Illness {
 
+	// 唯一标识符，采用UUID
 	private String id;
+	// 疾病名称
 	private String name;
+	// 疾病简介
 	private String description;
 
 	public String getId() {
