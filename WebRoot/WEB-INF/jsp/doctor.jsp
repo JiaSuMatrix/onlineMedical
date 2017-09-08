@@ -90,12 +90,8 @@
 	                        <td class="td1">${doctor.mail }</td>
 	                    </tr>
 	                    <tr>
-	                        <td class="td">所属医院:</td>
-	                        <td class="td1">${doctor.hospital.name }</td>
-	                    </tr>
-	                    <tr>
-	                        <td class="td">个人简介:</td>
-	                        <td class="td1">${doctor.description }</td>
+	                        <td class="td">所属医院及科室:</td>
+	                        <td class="td1">${doctor.department.hospital.name }-${doctor.department.name }</td>
 	                    </tr>
 		            </table>
 		            <div id="edit">
@@ -123,11 +119,23 @@
 	                    </tr>
 	                    <tr>
 	                        <td class="td">所属医院:</td>
-	                        <td class="td1"><input id="hospital_id" type="text" value="${doctor.hospital.name }" name="hospital_id"></td>
+	                        <td class="td1">
+	                        	<select id="hospital" name="hospital">
+	                        		<c:forEach var="h" items="${hospitals }">
+	                        			<option value="${h.name }">${h.name }</option>
+	                        		</c:forEach>
+	                        	</select>
+	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <td class="td">个人简介:</td>
-	                        <td class="td1"><input id="description" type="text" value="${doctor.description }" name="description"></td>
+	                        <td class="td">所属科室:</td>
+	                        <td class="td1">
+	                        	<select id="department" name="department">
+	                        		<c:forEach var="d" items="${departments }">
+	                        			<option value="${d.name }">${d.name }</option>
+	                        		</c:forEach>
+	                        	</select>
+	                        </td>
 	                    </tr>
 	                   </table>
 	                   <div id="edit">

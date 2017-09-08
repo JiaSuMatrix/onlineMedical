@@ -15,6 +15,8 @@ public class Hospital {
 	private String location;
 	// 医院简介
 	private String description;
+	// 被查询热度指数
+	private Integer heat;
 
 	public String getId() {
 		return id;
@@ -46,6 +48,14 @@ public class Hospital {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Integer getHeat() {
+		return heat;
+	}
+
+	public void setHeat(Integer heat) {
+		this.heat = heat;
 	}
 
 }

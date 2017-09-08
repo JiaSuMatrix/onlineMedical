@@ -1,8 +1,11 @@
 package cn.hdu.service;
 
+import java.util.List;
+
 import cn.hdu.exception.DaoException;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
+import cn.hdu.po.Hospital;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
 
@@ -31,5 +34,8 @@ public interface UserService {
 
 	//根据id查找医生
 	Doctor findDoctorById(String id) throws DaoException;
+
+	//查出所有医院
+	List<Hospital> findAllHospital() throws DaoException;
 
 }

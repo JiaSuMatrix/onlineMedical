@@ -1,5 +1,7 @@
 package cn.hdu.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
+import cn.hdu.po.Hospital;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
 import cn.hdu.service.UserService;
+
 /**
  * 
- * @author wangye
- * 用于处理所有与用户有关的请求
+ * @author wangye 用于处理所有与用户有关的请求
  *
  */
 @Controller
@@ -171,12 +174,20 @@ public class UserController {
 	// 用显示于医生用户完善个人资料页面，editpage参数不为空时显示编辑页面
 	@RequestMapping("/doctorEditPage.action")
 	public String doctorEditPage(HttpSession httpSession, Model model, String editPage) {
-		Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
-		if (doctor != null) {
-			model.addAttribute("doctor", doctor);
+		try {
+			Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
+			if (doctor != null) {
+				model.addAttribute("doctor", doctor);
+			}
+			List<Hospital> hospitals = userService.findAllHospital();
+			model.addAttribute("hospitals", hospitals);
+			model.addAttribute("editPage", editPage);
+			return "doctor";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "数据库操作异常，请联系管理员！");
+			return "message";
 		}
-		model.addAttribute("editPage", editPage);
-		return "doctor";
 	}
 
 	// 用于显示患者用户完善个人资料页面，editpage参数不为空时显示编辑页面

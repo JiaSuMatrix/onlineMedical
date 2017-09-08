@@ -14,6 +14,16 @@ public class Illness {
 	private String name;
 	// 疾病简介
 	private String description;
+	// 被查询热度指数
+	private Integer heat;
+
+	public Integer getHeat() {
+		return heat;
+	}
+
+	public void setHeat(Integer heat) {
+		this.heat = heat;
+	}
 
 	public String getId() {
 		return id;

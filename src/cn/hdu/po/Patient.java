@@ -14,9 +14,7 @@ public class Patient {
 	private String phone;
 	// 邮箱地址
 	private String mail;
-	// 被查询热度指数
-	private Integer heat;
-
+	
 	public String getId() {
 		return id;
 	}
@@ -55,14 +53,6 @@ public class Patient {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public Integer getHeat() {
-		return heat;
-	}
-
-	public void setHeat(Integer heat) {
-		this.heat = heat;
 	}
 
 	public String getMail() {

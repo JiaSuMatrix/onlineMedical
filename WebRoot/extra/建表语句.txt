@@ -31,7 +31,7 @@ CREATE table illness(
 	name           VARCHAR(12)     NOT NULL,
 	description    VARCHAR(256)    NOT NULL,
 	department_id  VARCHAR(36)     NOT NULL,
-	heat        INT             NULL,
+	heat        INT                NULL,
 	CONSTRAINT department_id_FK2 FOREIGN KEY(department_id) REFERENCES department(id)
 );
 
@@ -57,7 +57,7 @@ CREATE table reservation(
 	id                VARCHAR(36)     PRIMARY KEY,
 	doctor_id         VARCHAR(36)     NOT NULL ,
 	patient_id        VARCHAR(36)     NOT NULL,
-	reservation_time  DATE            NOT NULL,
+	reservation_time  DATETIME        NOT NULL,
 	symptom           VARCHAR(256)    NOT NULL,
 	success           INT             NOT NULL,
 	CONSTRAINT doctor_id_FK2 FOREIGN KEY(doctor_id) REFERENCES doctor(id),

@@ -28,12 +28,7 @@
     	      },
     	      phone: {
     	        required: true
-    	      },
-    	      description: {
-    	        required: true,
-    	        minlength: 2
     	      }
-    	      
     	    },
     	    messages: {
     	      username: {
@@ -49,11 +44,7 @@
     	        rangelength:$.validator.format("密码长度为{0}-{1}个字符"),
     	        equalTo: "两次密码输入不一致!"
     	      },
-    	      phone: "手机号码不能为空!",
-    	      description: {
-      	        required: "简介不能为空！",
-      	        minlength: "不能少于2个字符！"
-      	      }
+    	      phone: "手机号码不能为空!"
     	    }
     	});
     });
@@ -77,7 +68,6 @@
                     <input type="password" placeholder="请输入密码" id="password" name="password"/>
                     <input type="password" placeholder="确认密码" id="repassword" name="repassword"/>
                     <input type="text" placeholder="请输入手机号" id="phone" name="phone"/>
-                    <textarea id="description" name="description" placeholder="请输入个人简介"></textarea>
                     <input type="submit" value="注册" id="submit" name="submit"/>
                 </form>
     		</div>

@@ -19,12 +19,10 @@ public class Doctor {
 	private String phone;
 	// 邮箱地址
 	private String mail;
-	// 个人简介
-	private String description;
 	// 被查询热度指数
 	private Integer heat;
-	// 所属医院的实体
-	private Hospital hospital;
+	// 所属科室的实体
+	private Department department;
 
 	public String getId() {
 		return id;
@@ -66,14 +64,6 @@ public class Doctor {
 		this.phone = phone;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Integer getHeat() {
 		return heat;
 	}
@@ -82,12 +72,12 @@ public class Doctor {
 		this.heat = heat;
 	}
 
-	public Hospital getHospital() {
-		return hospital;
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setHospital(Hospital hospital) {
-		this.hospital = hospital;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public String getMail() {

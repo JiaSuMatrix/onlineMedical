@@ -1,5 +1,7 @@
 package cn.hdu.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -7,6 +9,7 @@ import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.UserMapper;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
+import cn.hdu.po.Hospital;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
 import cn.hdu.service.UserService;
@@ -82,6 +85,13 @@ public class UserServiceImpl implements UserService {
 			return doctor;
 		}
 		return null;
+	}
+
+	//查出所有医院
+	@Override
+	public List<Hospital> findAllHospital() throws DaoException {
+		List<Hospital> hospitals = userMapper.findAllHospital();
+		return hospitals;
 	}
 
 }

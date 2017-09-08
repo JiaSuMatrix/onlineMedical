@@ -54,5 +54,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateDoctor" parameterType="doctor">
 		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},description = #{description},mail = #{mail} WHERE id = #{id}
 	</update>
+	
+	<!-- 查出所有医院-->
+	<select id="findAllHospital" resultType="hospital">
+		SELECT * FROM hospital
+	</select>
 </mapper>
 
