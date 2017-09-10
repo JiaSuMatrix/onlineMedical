@@ -17,6 +17,8 @@ import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Hospital;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
+import cn.hdu.service.DepartmentService;
+import cn.hdu.service.HospitalService;
 import cn.hdu.service.UserService;
 
 /**
@@ -30,6 +32,14 @@ public class UserController {
 	@Autowired
 	@Qualifier("userService") // 根据名称注入
 	private UserService userService;
+
+	@Autowired
+	@Qualifier("hospitalService")
+	private HospitalService hospitalService;
+
+	@Autowired
+	@Qualifier("departmentService")
+	private DepartmentService departmentService;
 
 	@SuppressWarnings("finally")
 	@RequestMapping("/doctorRegister.action") // 医生注册
@@ -180,11 +190,11 @@ public class UserController {
 			if (doctor != null) {
 				model.addAttribute("doctor", doctor);
 			}
-			List<Hospital> hospitals = userService.findAllHospital();
+			List<Hospital> hospitals = hospitalService.findAllHospital();
 			model.addAttribute("hospitals", hospitals);
-			if(hospitalName != null){
-				Hospital hospital = userService.findHospitalByName(hospitalName);
-				List<Department> departments = userService.findAllDepartmentByhospitalId(hospital.getId());
+			if (hospitalName != null) {
+				Hospital hospital = hospitalService.findHospitalByName(hospitalName);
+				List<Department> departments = departmentService.findAllDepartmentByhospitalId(hospital.getId());
 				model.addAttribute("departments", departments);
 			}
 			model.addAttribute("editPage", editPage);

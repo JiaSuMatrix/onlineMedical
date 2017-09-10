@@ -14,4 +14,8 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 
 	<bean id="userService" class="cn.hdu.service.impl.UserServiceImpl"></bean>
+	
+	<bean id="hospitalService" class="cn.hdu.service.impl.HospitalServiceImpl"></bean>
+
+	<bean id="departmentService" class="cn.hdu.service.impl.DepartmentServiceImpl"></bean>
 </beans>

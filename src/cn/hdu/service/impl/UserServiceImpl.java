@@ -1,16 +1,12 @@
 package cn.hdu.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.UserMapper;
-import cn.hdu.po.Department;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
-import cn.hdu.po.Hospital;
 import cn.hdu.po.Patient;
 import cn.hdu.po.PatientVo;
 import cn.hdu.service.UserService;
@@ -21,99 +17,69 @@ public class UserServiceImpl implements UserService {
 	@Qualifier("userMapper")
 	private UserMapper userMapper;
 
-	//医生注册
+	// 医生注册
 	@Override
 	public void doctorRegister(Doctor doctor) throws DaoException {
 
 		userMapper.doctorRegister(doctor);
 	}
 
-	//患者注册
+	// 患者注册
 	@Override
 	public void patientRegister(Patient patient) throws DaoException {
-		
+
 		userMapper.patientRegister(patient);
 	}
 
-	//医生登录
+	// 医生登录
 	@Override
-	public Doctor doctorLogin(DoctorVo doctorVo)  throws DaoException{
+	public Doctor doctorLogin(DoctorVo doctorVo) throws DaoException {
 		Doctor doctor = userMapper.doctorLogin(doctorVo);
-		if(doctor!=null){
+		if (doctor != null) {
 			return doctor;
 		}
 		return null;
 	}
 
-	//患者登录
+	// 患者登录
 	@Override
-	public Patient patientLogin(PatientVo patientVo) throws DaoException{
+	public Patient patientLogin(PatientVo patientVo) throws DaoException {
 		Patient patient = userMapper.patientLogin(patientVo);
-		if(patient!=null){
+		if (patient != null) {
 			return patient;
 		}
 		return null;
 	}
 
-	//更新患者信息
+	// 更新患者信息
 	@Override
 	public void updatePatient(Patient patient) throws DaoException {
 		userMapper.updatePatient(patient);
-		
+
 	}
 
-	//根据id查找患者
+	// 根据id查找患者
 	@Override
 	public Patient findPatientById(String id) throws DaoException {
 		Patient patient = userMapper.findPatientById(id);
-		if(patient!=null){
+		if (patient != null) {
 			return patient;
 		}
 		return null;
 	}
 
-	//更新医生信息
+	// 更新医生信息
 	@Override
 	public void updateDoctor(Doctor doctor) throws DaoException {
-		 userMapper.updateDoctor(doctor);
+		userMapper.updateDoctor(doctor);
 	}
 
-	//根据id查找医生
+	// 根据id查找医生
 	@Override
 	public Doctor findDoctorById(String id) throws DaoException {
 		Doctor doctor = userMapper.findDoctorById(id);
-		if(doctor!=null){
+		if (doctor != null) {
 			return doctor;
-		}
-		return null;
-	}
-
-	//查出所有医院
-	@Override
-	public List<Hospital> findAllHospital() throws DaoException {
-		List<Hospital> hospitals = userMapper.findAllHospital();
-		if(hospitals != null){
-			return hospitals;
-		}
-		return null;
-	}
-
-	//根据医院id查出该医院所有的科室
-	@Override
-	public List<Department> findAllDepartmentByhospitalId(String hospitalId) throws DaoException {
-		List<Department> departments = userMapper.findAllDepartmentByhospitalId(hospitalId);
-		if(departments != null){
-			return departments;
-		}
-		return null;
-	}
-
-	//根据姓名查找医生
-	@Override
-	public Hospital findHospitalByName(String hospitalName) throws DaoException {
-		Hospital hospital = userMapper.findHospitalByName(hospitalName);
-		if(hospital != null){
-			return hospital;
 		}
 		return null;
 	}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.hdu.mapper.HospitalMapper">
+
+	<!-- 查出所有医院 -->
+	<select id="findAllHospital" resultType="hospital">
+		SELECT * FROM hospital
+	</select>
+
+	<!-- 根据姓名查找医院 -->
+	<select id="findHospitalByName" parameterType="string"
+		resultType="hospital">
+		SELECT * FROM hospital WHERE name = #{name}
+	</select>
+</mapper>
+
