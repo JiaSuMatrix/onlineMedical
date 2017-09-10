@@ -54,7 +54,19 @@
       	      }
     	    }
     	});
+    	
+    	  /* $("#hospital").change(function(){
+    		  var hospitalName = $("#hospital").val();
+    		  alert(hospitalName);
+    	  	    $.get("/onlineMedical/doctorEditPage.action" , {"hospitalName" : hospitalName,"editPage":"editPage"}, function(data){
+    	  	    	alert(data);
+    	  	    })
+    	  	}); */
     });
+    	  
+  </script>
+  <script type="text/javascript">
+  	
   </script>
 </head>
 
@@ -121,6 +133,7 @@
 	                        <td class="td">所属医院:</td>
 	                        <td class="td1">
 	                        	<select id="hospital" name="hospital">
+	                        		<option>请选择医院</option>
 	                        		<c:forEach var="h" items="${hospitals }">
 	                        			<option value="${h.name }">${h.name }</option>
 	                        		</c:forEach>
@@ -131,6 +144,7 @@
 	                        <td class="td">所属科室:</td>
 	                        <td class="td1">
 	                        	<select id="department" name="department">
+	                        	<option>请选择科室</option>
 	                        		<c:forEach var="d" items="${departments }">
 	                        			<option value="${d.name }">${d.name }</option>
 	                        		</c:forEach>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.UserMapper;
+import cn.hdu.po.Department;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Hospital;
@@ -91,7 +92,30 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Hospital> findAllHospital() throws DaoException {
 		List<Hospital> hospitals = userMapper.findAllHospital();
-		return hospitals;
+		if(hospitals != null){
+			return hospitals;
+		}
+		return null;
+	}
+
+	//根据医院id查出该医院所有的科室
+	@Override
+	public List<Department> findAllDepartmentByhospitalId(String hospitalId) throws DaoException {
+		List<Department> departments = userMapper.findAllDepartmentByhospitalId(hospitalId);
+		if(departments != null){
+			return departments;
+		}
+		return null;
+	}
+
+	//根据姓名查找医生
+	@Override
+	public Hospital findHospitalByName(String hospitalName) throws DaoException {
+		Hospital hospital = userMapper.findHospitalByName(hospitalName);
+		if(hospital != null){
+			return hospital;
+		}
+		return null;
 	}
 
 }

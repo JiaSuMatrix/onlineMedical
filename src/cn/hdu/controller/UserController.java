@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.hdu.po.Department;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Hospital;
@@ -173,7 +174,7 @@ public class UserController {
 
 	// 用显示于医生用户完善个人资料页面，editpage参数不为空时显示编辑页面
 	@RequestMapping("/doctorEditPage.action")
-	public String doctorEditPage(HttpSession httpSession, Model model, String editPage) {
+	public String doctorEditPage(HttpSession httpSession, Model model, String editPage, String hospitalName) {
 		try {
 			Doctor doctor = (Doctor) httpSession.getAttribute("doctor");
 			if (doctor != null) {
@@ -181,8 +182,14 @@ public class UserController {
 			}
 			List<Hospital> hospitals = userService.findAllHospital();
 			model.addAttribute("hospitals", hospitals);
+			if(hospitalName != null){
+				Hospital hospital = userService.findHospitalByName(hospitalName);
+				List<Department> departments = userService.findAllDepartmentByhospitalId(hospital.getId());
+				model.addAttribute("departments", departments);
+			}
 			model.addAttribute("editPage", editPage);
 			return "doctor";
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("message", "数据库操作异常，请联系管理员！");

@@ -59,5 +59,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAllHospital" resultType="hospital">
 		SELECT * FROM hospital
 	</select>
+	
+	<!-- 根据医院id查出该医院所有的科室-->
+	<select id="findAllDepartmentByhospitalId" parameterType="string" resultType="department">
+		SELECT * FROM department WHERE hospital_id = #{hospital_id}
+	</select>
+	
+	<!-- 根据姓名查找医生-->
+	<select id="findHospitalByName" parameterType="string" resultType="hospital">
+		SELECT * FROM hospital WHERE name = #{name}
+	</select>
 </mapper>
 
