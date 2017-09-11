@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.DepartmentMapper;
 import cn.hdu.po.Department;
+import cn.hdu.po.DepartmentVo;
 import cn.hdu.service.DepartmentService;
 
 public class DepartmentServiceImpl implements DepartmentService {
@@ -22,6 +23,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 		List<Department> departments = departmentMapper.findAllDepartmentByhospitalId(hospitalId);
 		if(departments != null){
 			return departments;
+		}
+		return null;
+	}
+
+	//根据医院ID和科室名称查找特定科室
+	@Override
+	public Department findDepartmentByhospitalIdAndName(DepartmentVo departmentVo) {
+		Department department = departmentMapper.findDepartmentByhospitalIdAndName(departmentVo);
+		if(department != null){
+			return department;
 		}
 		return null;
 	}

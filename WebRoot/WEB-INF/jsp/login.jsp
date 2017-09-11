@@ -14,7 +14,7 @@
         $("#form").validate({
             rules:{     //配置验证规则，key就是被验证的dom对象，value就是调用验证的方法(也是json格式)
             	"doctor.username":{
-                    required:true,  //必填。如果验证方法不需要参数，则配置为true
+                    required:true, //必填。如果验证方法不需要参数，则配置为true
                 },
                 "doctor.password":{
                     required:true,
@@ -29,6 +29,11 @@
 	            }
 	        }
         });
+        
+        $.ajax({
+        	url:"/onlineMedical/"
+        });
+        
     });
 	</script>
 </head>

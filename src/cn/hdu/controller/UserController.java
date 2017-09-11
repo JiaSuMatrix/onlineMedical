@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.hdu.po.Department;
+import cn.hdu.po.DepartmentVo;
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Hospital;
@@ -192,11 +194,6 @@ public class UserController {
 			}
 			List<Hospital> hospitals = hospitalService.findAllHospital();
 			model.addAttribute("hospitals", hospitals);
-			if (hospitalName != null) {
-				Hospital hospital = hospitalService.findHospitalByName(hospitalName);
-				List<Department> departments = departmentService.findAllDepartmentByhospitalId(hospital.getId());
-				model.addAttribute("departments", departments);
-			}
 			model.addAttribute("editPage", editPage);
 			return "doctor";
 
@@ -244,11 +241,19 @@ public class UserController {
 
 	//// 更新完善医生个人信息
 	@RequestMapping("/updateDoctor.action")
-	public ModelAndView updateDoctor(HttpSession httpSession, Doctor doctor) {
+	public ModelAndView updateDoctor(HttpSession httpSession, Doctor doctor, String hospitalName,
+			String departmentName) {
 		ModelAndView modelAndView = new ModelAndView();
 		try {
 			Doctor d = (Doctor) httpSession.getAttribute("doctor");
 			doctor.setId(d.getId());
+			Hospital hospital = hospitalService.findHospitalByName(hospitalName);
+			DepartmentVo departmentVo = new DepartmentVo();
+			departmentVo.setHospital(hospital);
+			departmentVo.setDepartmentName(departmentName);
+			Department department = departmentService.findDepartmentByhospitalIdAndName(departmentVo);
+			department.setHospital(hospital);
+			doctor.setDepartment(department);
 			userService.updateDoctor(doctor);
 			Doctor fullDoctor = userService.findDoctorById(d.getId());
 			if (fullDoctor != null) {
@@ -259,7 +264,7 @@ public class UserController {
 			return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();
-			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+			modelAndView.addObject("message", "医院科室不能为空，请选择！");
 			modelAndView.setViewName("message");
 			return modelAndView;
 		}
@@ -278,5 +283,21 @@ public class UserController {
 	public String doctorLogout(HttpSession session) {
 		session.invalidate();
 		return "index";
+	}
+
+	// 将科室信息以json数据格式响应
+	@RequestMapping("/getDepartmentsByHospitalId.action")
+	public @ResponseBody List<Department> getDepartmentsByHospitalId(Model model, String editPage,
+			String hospitalName) {
+		List<Department> departments = null;
+		try {
+			Hospital hospital = hospitalService.findHospitalByName(hospitalName);
+			departments = departmentService.findAllDepartmentByhospitalId(hospital.getId());
+			model.addAttribute("departments", departments);
+			return departments;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return departments;
+		}
 	}
 }

@@ -5,10 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cn.hdu.mapper.DepartmentMapper">
 
-	<!-- 根据医院id查出该医院所有的科室-->
-	<select id="findAllDepartmentByhospitalId" parameterType="string" resultType="department">
+	<!-- 根据医院id查出该医院所有的科室 -->
+	
+	<select id="findAllDepartmentByhospitalId" parameterType="string"
+		resultType="department">
 		SELECT * FROM department WHERE hospital_id = #{hospital_id}
 	</select>
-	
+
+	<!-- 根据医院ID和科室名称查找特定科室 -->
+
+	<select id="findDepartmentByhospitalIdAndName" parameterType="departmentVo"
+		resultType="department">
+		SELECT * FROM department WHERE hospital_id = #{hospital.id} AND name = #{departmentName}
+	</select>
 </mapper>
 

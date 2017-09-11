@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 更新医生信息 -->
 	<update id="updateDoctor" parameterType="doctor">
-		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},description = #{description},mail = #{mail} WHERE id = #{id}
+		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},mail = #{mail},department_id = #{department.id} WHERE id = #{id}
 	</update>
 
 </mapper>
