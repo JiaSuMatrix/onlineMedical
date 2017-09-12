@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 根据姓名查找医院 -->
 	<select id="findHospitalByName" parameterType="string"
 		resultType="hospital">
-		SELECT * FROM hospital WHERE name = #{name}
+		SELECT * FROM hospital WHERE hospitalName = #{hospitalName}
 	</select>
 </mapper>
 

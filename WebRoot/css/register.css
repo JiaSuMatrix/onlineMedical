@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body,h1,h2,ul,p,input,textarea{ margin:0; padding:0;}
+body,h1,h2,ul,p,input,select{ margin:0; padding:0;}
 li{ list-style:none;}
 a{ text-decoration:none;}
 #wrapper{ margin:0 auto;}
@@ -21,18 +21,19 @@ h1{ font-size:20px; font-weight:normal; color:#FF9500; position:absolute; left:5
 
 #login{ width:432px; height:440px; position:absolute; left:458px; top:100px; background:url(../images/register_bg.png)}
 #h2{ height:30px; line-height:30px;font-size:14px; font-weight:bold; color:#666; position:absolute; left:24px;top:36px;}
-#user,#password,#repassword,#phone,#description{position:absolute; left:24px;width:372px; height:36px; border:2px solid #099; border-radius:6px; text-indent:10px;outline:none; font-size:14px; font-family:"Arial Black", Gadget, sans-serif}
-#user{  top:82px;}
-#password{ top:140px;}
-#repassword{top:198px;}
-#phone{top:256px;}
-#description{top:314px;font-family:"Arial Black", Gadget, sans-serif;}
+#user,#password,#repassword,#phone,#department,#hospital{position:absolute; left:24px;width:372px; height:36px; border:2px solid #099; border-radius:6px; text-indent:10px;outline:none; font-size:14px; font-family:"Arial Black", Gadget, sans-serif}
+#user{  top:70px;}
+#password{ top:120px;}
+#repassword{top:170px;}
+#phone{top:220px;}
+#hospital{top:270px;}
+#department{top:320px;}
+#hospital,#department{ width:376px;height:38px;outline:none;color:#767676;text-indent:5px;}
 #submit{position:absolute; width:114px; height:52px;  border:none; background:none; background:url(../images/login_btn.png) no-repeat;  cursor:pointer; color:#fff; font-size:16px; font-weight:bold; letter-spacing:10px;}
 #submit{left:156px; top:370px;}
 
-#user-error,#password-error,#repassword-error,#phone-error,#description-error{ position: absolute; color: red; font-size: 16px;left:220px;}
-#user-error{  top:90px;}
-#password-error{ top:148px;}
-#repassword-error{top:206px;}
-#phone-error{top:262px;}
-#description-error{top:320px;font-family:"Arial Black", Gadget, sans-serif;}
+#user-error,#password-error,#repassword-error,#phone-error{ position: absolute; color: red; font-size: 16px;left:220px;}
+#user-error{  top:77px;}
+#password-error{ top:127px;}
+#repassword-error{top:177px;}
+#phone-error{top:227px;}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!Doctype html>
 <html>
 <head>
@@ -46,6 +47,26 @@
     	      },
     	      phone: "手机号码不能为空!"
     	    }
+    	    
+    	});
+    	
+    	  $("#hospital").change(function() {
+  			var hospitalName = $("#hospital").val();
+  			$.ajax({
+  				url : "/onlineMedical/getDepartmentsByHospitalId.action",
+  				type : "post",
+  				data : "hospitalName=" + hospitalName,
+  				success : function(data) {
+  					removeBeforeAdd(data);
+  				}
+  			});
+  			
+  			function removeBeforeAdd(data){
+  				$("#department").empty();   //每次新增前将原来的删除
+  				for(var i = 0;i < data.length;i++){
+  					$("<option value='"+data[i].departmentName+"'>"+data[i].departmentName+"</option>").appendTo("#department");
+  				}
+  			}
     	});
     });
   </script>
@@ -68,6 +89,15 @@
                     <input type="password" placeholder="请输入密码" id="password" name="password"/>
                     <input type="password" placeholder="确认密码" id="repassword" name="repassword"/>
                     <input type="text" placeholder="请输入手机号" id="phone" name="phone"/>
+                    <select id="hospital" name="hospitalName">
+                    	<option>请选择医院</option>
+						<c:forEach var="h" items="${hospitals }">
+							<option value="${h.hospitalName }">${h.hospitalName }</option>
+						</c:forEach>
+					</select>
+                    <select id="department" name="departmentName">
+						<option>请选择科室</option>
+  					</select>
                     <input type="submit" value="注册" id="submit" name="submit"/>
                 </form>
     		</div>

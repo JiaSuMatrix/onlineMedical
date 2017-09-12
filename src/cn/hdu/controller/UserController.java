@@ -45,9 +45,19 @@ public class UserController {
 
 	@SuppressWarnings("finally")
 	@RequestMapping("/doctorRegister.action") // 医生注册
-	public ModelAndView doctorRegister(Doctor doctor) {
+	public ModelAndView doctorRegister(Doctor doctor, String hospitalName,
+			String departmentName) {
 		ModelAndView modelAndView = new ModelAndView();
 		try {
+			
+			Hospital hospital = hospitalService.findHospitalByName(hospitalName);
+			DepartmentVo departmentVo = new DepartmentVo();
+			departmentVo.setHospital(hospital);
+			departmentVo.setDepartmentName(departmentName);
+			Department department = departmentService.findDepartmentByhospitalIdAndName(departmentVo);
+			department.setHospital(hospital);
+			doctor.setDepartment(department);
+			
 			userService.doctorRegister(doctor);
 			modelAndView.addObject("message",
 					"<meta http-equiv='refresh' content='3;url=/onlineMedical/doctorLoginPage.action?username="
@@ -56,7 +66,7 @@ public class UserController {
 							+ doctor.getUsername() + "'>去登录</a>");
 		} catch (Exception e) {
 			e.printStackTrace();
-			modelAndView.addObject("message", "数据库操作异常，请联系管理员！");
+			modelAndView.addObject("message", "医院科室不能为空，请选择！");
 
 		} finally {
 			modelAndView.setViewName("message");
@@ -88,9 +98,17 @@ public class UserController {
 
 	// 用于跳转到医生注册页面
 	@RequestMapping("/doctorRegisterPage.action")
-	public String doctorRegisterPage() {
+	public String doctorRegisterPage(Model model) {
+		try {
+			List<Hospital> hospitals = hospitalService.findAllHospital();
+			model.addAttribute("hospitals", hospitals);
+			return "doctorRegister";
 
-		return "doctorRegister";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "数据库操作异常，请联系管理员！");
+			return "message";
+		}
 	}
 
 	// 用于跳转到患者注册页面
@@ -287,8 +305,7 @@ public class UserController {
 
 	// 将科室信息以json数据格式响应
 	@RequestMapping("/getDepartmentsByHospitalId.action")
-	public @ResponseBody List<Department> getDepartmentsByHospitalId(Model model, String editPage,
-			String hospitalName) {
+	public @ResponseBody List<Department> getDepartmentsByHospitalId(Model model, String hospitalName) {
 		List<Department> departments = null;
 		try {
 			Hospital hospital = hospitalService.findHospitalByName(hospitalName);

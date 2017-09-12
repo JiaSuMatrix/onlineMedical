@@ -10,7 +10,8 @@ public class Hospital {
 	// 唯一标识符，采用UUID
 	private String id;
 	// 医院姓名
-	private String name;
+	private String hospitalName;
+
 	// 医院地址
 	private String location;
 	// 医院简介
@@ -26,12 +27,12 @@ public class Hospital {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getHospitalName() {
+		return hospitalName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
 	}
 
 	public String getLocation() {

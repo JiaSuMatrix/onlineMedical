@@ -54,7 +54,7 @@
 			$.ajax({
 				url : "/onlineMedical/getDepartmentsByHospitalId.action",
 				type : "post",
-				data : "hospitalName=" + hospitalName + "&editPage=editPage",
+				data : "hospitalName=" + hospitalName,
 				success : function(data) {
 					removeBeforeAdd(data);
 				}
@@ -63,7 +63,7 @@
 			function removeBeforeAdd(data){
 				$("#department").empty();   //每次新增前将原来的删除
 				for(var i = 0;i < data.length;i++){
-					$("<option value='"+data[i].name+"'>"+data[i].name+"</option>").appendTo("#department");
+					$("<option value='"+data[i].departmentName+"'>"+data[i].departmentName+"</option>").appendTo("#department");
 				}
 			}
 		});
@@ -107,7 +107,7 @@
 						</tr>
 						<tr>
 							<td class="td">所属医院及科室:</td>
-							<td class="td1">${doctor.department.hospital.name }-${doctor.department.name }</td>
+							<td class="td1">${doctor.department.hospital.hospitalName }-${doctor.department.departmentName }</td>
 						</tr>
 					</table>
 					<div id="edit">
@@ -143,16 +143,26 @@
 							<tr>
 								<td class="td">所属医院:</td>
 								<td class="td1"><select id="hospital" name="hospitalName">
-										<option>请选择医院</option>
+										<c:if test="${doctor!=null}">
+											<option>${doctor.department.hospital.hospitalName }</option>
+										</c:if>
+										<c:if test="${doctor==null}">
+											<option>请选择医院</option>
+										</c:if>
 										<c:forEach var="h" items="${hospitals }">
-											<option value="${h.name }">${h.name }</option>
+											<option value="${h.hospitalName }">${h.hospitalName }</option>
 										</c:forEach>
 								</select></td>
 							</tr>
 							<tr>
 								<td class="td">所属科室:</td>
 								<td class="td1"><select id="department" name="departmentName">
-										<option>请选择科室</option>
+									<c:if test="${doctor!=null}">
+										<option>${doctor.department.departmentName }</option>
+									</c:if>
+									<c:if test="${doctor==null}">
+											<option>请选择科室</option>
+										</c:if>
   								</select></td>
 							</tr>
 						</table>

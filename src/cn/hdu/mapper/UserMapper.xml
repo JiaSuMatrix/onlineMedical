@@ -7,15 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 医生注册 -->
 	<insert id="doctorRegister" parameterType="doctor">
-	
-		<!-- 使用uuid生成主键-->
+
+		<!-- 使用uuid生成主键 -->
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
 			select uuid()
 		</selectKey>
-		INSERT INTO doctor(id,username,password,phone)
-		VALUES(#{id},#{username},#{password},#{phone})
+		INSERT INTO doctor(id,username,password,phone,department_id)
+		VALUES(#{id},#{username},#{password},#{phone},#{department.id})
 	</insert>
-	
+
 	<!-- 患者注册 -->
 	<insert id="patientRegister" parameterType="patient">
 		<selectKey keyProperty="id" resultType="string" order="BEFORE">
@@ -24,35 +24,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO patient(id,username,password,phone)
 		VALUES(#{id},#{username},#{password},#{phone})
 	</insert>
-	
+
 	<!-- 医生登录 -->
-	<select id="doctorLogin" parameterType="doctorVo" resultType="doctor">
-		SELECT * FROM doctor WHERE username = #{doctor.username} AND password = #{doctor.password}
+	<select id="doctorLogin" parameterType="doctorVo" resultMap="doctorLoginResultMap">
+		SELECT d.*,de.departmentName,h.hospitalName
+		FROM doctor d,department de,hospital h
+		WHERE
+		d.username = #{doctor.username}
+		AND d.password = #{doctor.password}
+		AND d.department_id = de.id
+		AND
+		de.hospital_id = h.id
 	</select>
-	
+
+	<resultMap type="doctor" id="doctorLoginResultMap">
+		<!-- 唯一标识符 -->
+		<id column="id" property="id" />
+		<!-- 普通属性映射 -->
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="age" property="age" />
+		<result column="mail" property="mail" />
+		<result column="phone" property="phone" />
+		<result column="heat" property="heat" />
+
+		<!-- 医生关联部门 -->
+		<association property="department" javaType="department">
+			<id column="department_id" property="id" />
+			<result column="departmentName" property="departmentName" />
+
+			<!-- 部门关联医院 -->
+			<association property="hospital" javaType="hospital">
+				<id column="hospital_id" property="id" />
+				<result column="hospitalName" property="hospitalName" />
+			</association>
+		</association>
+	</resultMap>
+
 	<!-- 患者登录 -->
 	<select id="patientLogin" parameterType="patientVo" resultType="patient">
-		SELECT * FROM patient WHERE username = #{patient.username} AND password = #{patient.password}
+		SELECT * FROM patient WHERE username = #{patient.username} AND
+		password = #{patient.password}
 	</select>
-	
+
 	<!-- 根据id查找患者 -->
 	<select id="findPatientById" parameterType="string" resultType="patient">
 		SELECT * FROM patient WHERE id = #{id}
 	</select>
-	
+
 	<!-- 根据id查找医生 -->
 	<select id="findDoctorById" parameterType="string" resultType="doctor">
 		SELECT * FROM doctor WHERE id = #{id}
 	</select>
-	
+
 	<!-- 更新患者信息 -->
 	<update id="updatePatient" parameterType="patient">
-		UPDATE patient SET username = #{username},age = #{age},phone = #{phone},mail = #{mail} WHERE id = #{id}
+		UPDATE patient SET
+		username = #{username},age = #{age},phone = #{phone},mail = #{mail}
+		WHERE id = #{id}
 	</update>
-	
+
 	<!-- 更新医生信息 -->
 	<update id="updateDoctor" parameterType="doctor">
-		UPDATE doctor SET username = #{username},age = #{age},phone = #{phone},mail = #{mail},department_id = #{department.id} WHERE id = #{id}
+		UPDATE doctor SET
+		username = #{username},age = #{age},phone = #{phone},mail =
+		#{mail},department_id = #{department.id} WHERE id = #{id}
 	</update>
 
 </mapper>

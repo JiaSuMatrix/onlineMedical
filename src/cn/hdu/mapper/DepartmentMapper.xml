@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="findDepartmentByhospitalIdAndName" parameterType="departmentVo"
 		resultType="department">
-		SELECT * FROM department WHERE hospital_id = #{hospital.id} AND name = #{departmentName}
+		SELECT * FROM department WHERE hospital_id = #{hospital.id} AND departmentName = #{departmentName}
 	</select>
 </mapper>
 

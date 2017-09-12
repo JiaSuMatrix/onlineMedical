@@ -10,7 +10,7 @@ public class Department {
 	// 唯一标识符，采用UUID
 	private String id;
 	// 科室名
-	private String name;
+	private String departmentName;
 	// 所属医院
 	private Hospital hospital;
 
@@ -18,10 +18,7 @@ public class Department {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
+	
 	public Hospital getHospital() {
 		return hospital;
 	}
@@ -30,11 +27,19 @@ public class Department {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
+
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+	
 }

@@ -1,7 +1,7 @@
 
 CREATE table hospital(
 	id          VARCHAR(36)     PRIMARY KEY,
-	name        VARCHAR(12)     NOT NULL,
+	hospitalName        VARCHAR(12)     NOT NULL,
 	location    VARCHAR(36)     NOT NULL,
 	description VARCHAR(256)    NULL,
 	heat        INT              NULL
@@ -9,7 +9,7 @@ CREATE table hospital(
 
 CREATE table department(
 	id          VARCHAR(36)     PRIMARY KEY,
-	name        VARCHAR(12)     NOT NULL,
+	departmentName        VARCHAR(12)     NOT NULL,
 	hospital_id VARCHAR(36)     NOT NULL,
 	CONSTRAINT hospital_id_FK FOREIGN KEY(hospital_id) REFERENCES hospital(id)
 );
