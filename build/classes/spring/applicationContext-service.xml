@@ -18,4 +18,6 @@
 	<bean id="hospitalService" class="cn.hdu.service.impl.HospitalServiceImpl"></bean>
 
 	<bean id="departmentService" class="cn.hdu.service.impl.DepartmentServiceImpl"></bean>
+
+	<bean class="cn.hdu.exception.CustomerExceptionResolver"></bean>
 </beans>

@@ -143,11 +143,8 @@
 							<tr>
 								<td class="td">所属医院:</td>
 								<td class="td1"><select id="hospital" name="hospitalName">
-										<c:if test="${doctor!=null}">
+										<c:if test="${doctor!=null }">
 											<option>${doctor.department.hospital.hospitalName }</option>
-										</c:if>
-										<c:if test="${doctor==null}">
-											<option>请选择医院</option>
 										</c:if>
 										<c:forEach var="h" items="${hospitals }">
 											<option value="${h.hospitalName }">${h.hospitalName }</option>
@@ -160,9 +157,7 @@
 									<c:if test="${doctor!=null}">
 										<option>${doctor.department.departmentName }</option>
 									</c:if>
-									<c:if test="${doctor==null}">
-											<option>请选择科室</option>
-										</c:if>
+									
   								</select></td>
 							</tr>
 						</table>

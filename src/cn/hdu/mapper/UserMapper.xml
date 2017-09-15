@@ -28,10 +28,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 医生登录 -->
 	<select id="doctorLogin" parameterType="doctorVo" resultMap="doctorLoginResultMap">
 		SELECT d.*,de.departmentName,h.hospitalName
-		FROM doctor d,department de,hospital h
+		FROM doctor d,department
+		de,hospital h
 		WHERE
 		d.username = #{doctor.username}
-		AND d.password = #{doctor.password}
+		AND d.password =
+		#{doctor.password}
 		AND d.department_id = de.id
 		AND
 		de.hospital_id = h.id
@@ -73,8 +75,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 根据id查找医生 -->
-	<select id="findDoctorById" parameterType="string" resultType="doctor">
-		SELECT * FROM doctor WHERE id = #{id}
+	<select id="findDoctorById" parameterType="string" resultMap="doctorLoginResultMap">
+		SELECT d.*,de.departmentName,h.hospitalName
+		FROM doctor d,department de,hospital h
+		WHERE d.id = #{id}
+		AND d.department_id = de.id
+		AND de.hospital_id = h.id
+		
 	</select>
 
 	<!-- 更新患者信息 -->

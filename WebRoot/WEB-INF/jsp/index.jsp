@@ -27,8 +27,8 @@
             </div>
             <h1>足不出户，在线预约</h1>
             <div id="search">
-            	<form>
-                	<input id="input" type="text" placeholder="输入医院名称、医生姓名、病情搜索"/>
+            	<form action="${pageContext.request.contextPath}/search.action" method="POST">
+                	<input id="input" type="text" placeholder="输入医院名称、医生姓名、病情搜索" name="name"/>
                     <a href=""><img id="img2" src="${pageContext.request.contextPath}/images/search.png" /></a>
                 </form>
             </div>

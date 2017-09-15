@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import cn.hdu.exception.DaoException;
 import cn.hdu.mapper.HospitalMapper;
 import cn.hdu.po.Hospital;
 import cn.hdu.service.HospitalService;
@@ -17,7 +16,7 @@ public class HospitalServiceImpl implements HospitalService {
 	private HospitalMapper hospitalMapper;
 	// 查出所有医院
 	@Override
-	public List<Hospital> findAllHospital() throws DaoException {
+	public List<Hospital> findAllHospital() throws Exception {
 		List<Hospital> hospitals = hospitalMapper.findAllHospital();
 		if (hospitals != null) {
 			return hospitals;
@@ -27,7 +26,7 @@ public class HospitalServiceImpl implements HospitalService {
 
 	//根据姓名查找医院
 		@Override
-		public Hospital findHospitalByName(String hospitalName) throws DaoException {
+		public Hospital findHospitalByName(String hospitalName) throws Exception {
 			Hospital hospital = hospitalMapper.findHospitalByName(hospitalName);
 			if(hospital != null){
 				return hospital;
