@@ -11,4 +11,5 @@ public interface HospitalMapper {
 
 	// 根据姓名查找医院
 	Hospital findHospitalByName(String hospitalName) throws Exception;
+
 }

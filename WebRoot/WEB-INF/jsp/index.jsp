@@ -29,7 +29,7 @@
             <div id="search">
             	<form action="${pageContext.request.contextPath}/search.action" method="POST">
                 	<input id="input" type="text" placeholder="输入医院名称、医生姓名、病情搜索" name="name"/>
-                    <a href=""><img id="img2" src="${pageContext.request.contextPath}/images/search.png" /></a>
+                    <input id="submitName" type="submit" value=""/>
                 </form>
             </div>
         </div>

@@ -15,5 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="hospital">
 		SELECT * FROM hospital WHERE hospitalName = #{hospitalName}
 	</select>
+	
+
 </mapper>
 

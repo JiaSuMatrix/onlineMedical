@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,ul,p,input,select{ margin:0; padding:0;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+#wrapper{ margin:0 auto;}
+
+#header{ height:50px; background:#F2F2F2;}
+#intro{ font-size:16px; color:#666; padding:16px 0 0 74px;}
+#message{ position:absolute; left:1100px; top:16px;}
+#message a,#intro a{ color:#000;font-size:18px; padding: 0 10px;}
+#message a:hover,#intro a:hover{ color:#FF9500;}
+
+#content{height:500px; margin:0 auto; background:#e3e3e3; padding-top:50px;}
+
+#footer{ height:50px; background:#f2f2f2;}
+
+
+

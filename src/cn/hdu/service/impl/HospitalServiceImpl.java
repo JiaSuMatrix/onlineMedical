@@ -14,6 +14,7 @@ public class HospitalServiceImpl implements HospitalService {
 	@Autowired
 	@Qualifier("hospitalMapper")
 	private HospitalMapper hospitalMapper;
+
 	// 查出所有医院
 	@Override
 	public List<Hospital> findAllHospital() throws Exception {
@@ -24,14 +25,14 @@ public class HospitalServiceImpl implements HospitalService {
 		return null;
 	}
 
-	//根据姓名查找医院
-		@Override
-		public Hospital findHospitalByName(String hospitalName) throws Exception {
-			Hospital hospital = hospitalMapper.findHospitalByName(hospitalName);
-			if(hospital != null){
-				return hospital;
-			}
-			return null;
+	// 根据姓名查找医院
+	@Override
+	public Hospital findHospitalByName(String hospitalName) throws Exception {
+		Hospital hospital = hospitalMapper.findHospitalByName(hospitalName);
+		if (hospital != null) {
+			return hospital;
 		}
+		return null;
+	}
 
 }
