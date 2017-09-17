@@ -11,5 +11,8 @@ public interface HospitalService {
 
 	// 根据姓名查找医医院
 	Hospital findHospitalByName(String hospitalName) throws Exception;
+
+	// 根据id查找医院
+	Hospital findHospitalById(String id) throws Exception;
 	
 }

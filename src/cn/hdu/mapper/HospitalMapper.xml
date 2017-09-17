@@ -11,11 +11,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 根据姓名查找医院 -->
-	<select id="findHospitalByName" parameterType="string"
-		resultType="hospital">
+	<select id="findHospitalByName" parameterType="string" resultType="hospital">
 		SELECT * FROM hospital WHERE hospitalName = #{hospitalName}
 	</select>
 	
-
+	<!-- 根据id查找医院 -->
+	<select id="findHospitalById" parameterType="string" resultType="hospital">
+		SELECT * FROM hospital WHERE id = #{id}
+	</select>
 </mapper>
 

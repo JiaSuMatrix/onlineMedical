@@ -35,4 +35,13 @@ public class HospitalServiceImpl implements HospitalService {
 		return null;
 	}
 
+	// 根据id查找医院
+		@Override
+		public Hospital findHospitalById(String id) throws Exception {
+			Hospital hospital = hospitalMapper.findHospitalById(id);
+			if (hospital != null) {
+				return hospital;
+			}
+			return null;
+		}
 }

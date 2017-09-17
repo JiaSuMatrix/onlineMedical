@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>医院主页</title>
-<link href="${pageContext.request.contextPath}/css/hospital.css"
+<link href="${pageContext.request.contextPath}/css/departments.css"
 	rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
 <script type="text/javascript">
@@ -22,14 +22,17 @@
 			</p>
 
 			<ul id="menu">
-				<li><a class="active" href="${pageContext.request.contextPath}/findHospitalByName.action?name=${hospital.hospitalName}">医院简介</a></li>
-				<li><a href="${pageContext.request.contextPath}/findAllDepartmentByhospitalId.action?hospitalId=${hospital.id}">科室介绍</a></li>
+				<li><a class="active" href="${pageContext.request.contextPath}/findHospitalByName.action?name=${hospital.hospitalName}">科室介绍</a></li>
 			</ul>
 		</div>
 		<div id="content">
 			<div id="mainContent">
-				<p id="des"><label>简介：</label>${hospital.description}</p>
-				<p id="location"><label>地址：</label>${hospital.location}</p>
+				<dl id="dl">
+					<dt class="dt">科室名称</dt>
+					<c:forEach var="department" items="${departments }">
+						<dd class="dd"><a href="#">${department.departmentName}</a></dd>
+					</c:forEach>
+				</dl>
 			</div>
 		</div>
 		<div id="footer"></div>
