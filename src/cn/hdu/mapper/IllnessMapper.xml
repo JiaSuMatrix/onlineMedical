@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.hdu.mapper.IllnessMapper">
+
+	<!-- 根据科室id查出疾病 -->
+	<select id="findIllnessesByDepartmentId" parameterType="string" resultType="illness">
+		SELECT * FROM illness WHERE department_id = #{departmentId}
+	</select>
+	
+</mapper>
+

@@ -1,5 +1,7 @@
 package cn.hdu.service;
 
+import java.util.List;
+
 import cn.hdu.po.Doctor;
 import cn.hdu.po.DoctorVo;
 import cn.hdu.po.Patient;
@@ -30,5 +32,8 @@ public interface UserService {
 
 	// 根据id查找医生
 	Doctor findDoctorById(String id) throws Exception;
+
+	// 根据科室id查找医生
+	List<Doctor> findDoctorsByDepartmentId(String departmentId) throws Exception;
 
 }

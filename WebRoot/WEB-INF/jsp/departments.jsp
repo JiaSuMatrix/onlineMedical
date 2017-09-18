@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!Doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>医院主页</title>
+<title>科室主页</title>
 <link href="${pageContext.request.contextPath}/css/departments.css"
 	rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
@@ -22,6 +21,7 @@
 			</p>
 
 			<ul id="menu">
+				<li><a href="${pageContext.request.contextPath}/findHospitalByName.action?name=${hospital.hospitalName}">医院简介</a></li>
 				<li><a class="active" href="${pageContext.request.contextPath}/findHospitalByName.action?name=${hospital.hospitalName}">科室介绍</a></li>
 			</ul>
 		</div>
@@ -30,7 +30,7 @@
 				<dl id="dl">
 					<dt class="dt">科室名称</dt>
 					<c:forEach var="department" items="${departments }">
-						<dd class="dd"><a href="#">${department.departmentName}</a></dd>
+						<dd class="dd"><a href="${pageContext.request.contextPath}/departmentDetail.action?departmentId=${department.id}">${department.departmentName}</a></dd>
 					</c:forEach>
 				</dl>
 			</div>

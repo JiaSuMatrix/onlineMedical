@@ -20,7 +20,7 @@ public class HospitalController {
 	@Qualifier("hospitalService")
 	private HospitalService hospitalService;
 
-	//根据姓名模糊查找医院
+	//根据姓名查找医院
 	@RequestMapping("/findHospitalByName")
 	public String findHospitalsByName(Model model, String name) throws Exception{
 		Hospital hospital = hospitalService.findHospitalByName(name);

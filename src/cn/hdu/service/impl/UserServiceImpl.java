@@ -1,5 +1,7 @@
 package cn.hdu.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -79,6 +81,16 @@ public class UserServiceImpl implements UserService {
 		Doctor doctor = userMapper.findDoctorById(id);
 		if (doctor != null) {
 			return doctor;
+		}
+		return null;
+	}
+
+	// 根据科室id查找医生
+	@Override
+	public List<Doctor> findDoctorsByDepartmentId(String departmentId) throws Exception {
+		List<Doctor> doctors = userMapper.findDoctorsByDepartmentId(departmentId);
+		if (doctors != null) {
+			return doctors;
 		}
 		return null;
 	}

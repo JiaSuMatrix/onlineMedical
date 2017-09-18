@@ -19,5 +19,7 @@
 
 	<bean id="departmentService" class="cn.hdu.service.impl.DepartmentServiceImpl"></bean>
 
+	<bean id="illnessService" class="cn.hdu.service.impl.IllnessServiceImpl"></bean>
+
 	<bean class="cn.hdu.exception.CustomerExceptionResolver"></bean>
 </beans>

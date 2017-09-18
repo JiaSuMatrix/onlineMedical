@@ -81,6 +81,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE d.id = #{id}
 		AND d.department_id = de.id
 		AND de.hospital_id = h.id
+	</select>
+
+	<!-- 根据科室id查找医生 -->
+	<select id="findDoctorsByDepartmentId" parameterType="string" resultType="doctor">
+		SELECT * FROM doctor d WHERE department_id = #{departmentId}
 		
 	</select>
 

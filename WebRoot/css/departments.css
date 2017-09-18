@@ -18,11 +18,14 @@ a{ text-decoration:none;}
 #menu li .active{color:#FF9500;}
 #content{height:500px; margin:0 auto; background:#099; padding-top:50px;}
 #mainContent{width:770px;height:450px;  margin:0 auto; background:url(../images/personal_bg.png) no-repeat;}
-#dl{ padding:40px 0 0 40px;}
-.dt{color:#666; height:40px; line-height:40px;  font-weight: bold;}
-#dl .dd{ font-size:16px; height:40px; line-height:40px; padding:20px 80px 0 10px; float: left; }
-#dl .dd a{color: #666;}	
-#dl .dd a:hover{color: #FF9500;}	
+#mainContentLeft{width:385px;height:450px; float: left;}
+#mainContentRight{width:385px;height:450px;float: left;}
+#dl,#mainContentRight #dl2{ padding:40px 0 0 40px;}
+.dt,#mainContentRight .dt2{color:#666; height:40px; line-height:40px;  font-weight: bold;}
+#dl .dd,#mainContentRight .dd2{ font-size:16px; height:40px; line-height:40px; padding:20px 80px 0 10px; float: left; }
+#dl .dd a,#mainContentRight .dd2 a{color: #666;}	
+#dl .dd a:hover,#mainContentRight .dd2 a:hover{color: #FF9500;}
+	
 #footer{ height:50px; background:#f2f2f2;}
 
 
