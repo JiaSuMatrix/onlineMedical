@@ -1,6 +1,14 @@
 package cn.hdu.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hdu.exception.CustomException;
+import cn.hdu.po.Illness;
+import cn.hdu.service.IllnessService;
 
 /**
  * 
@@ -11,4 +19,20 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IllnessController {
 
+	@Autowired
+	@Qualifier("illnessService")
+	private IllnessService illnessService;
+	
+	//根据疾病ID查找illness
+	
+	@RequestMapping("/findIllnessById.action")
+	public String findIllnessById(Model model, String illnessId) throws Exception{
+		
+		Illness illness = illnessService.findIllnessById(illnessId);
+		if (illness == null) {
+			throw new CustomException("数据库异常!");
+		}
+		model.addAttribute("illness", illness);
+		return "illness";
+	}
 }

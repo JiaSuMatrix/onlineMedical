@@ -111,8 +111,12 @@
 						</tr>
 					</table>
 					<div id="edit">
-						<a
-							href="${pageContext.request.contextPath}/doctorEditPage.action?editPage=editPage">编辑完善信息>></a>
+						<c:if test="${notDoctor==null }">
+							<a href="${pageContext.request.contextPath}/doctorEditPage.action?editPage=editPage">编辑完善信息>></a>
+						</c:if>
+						<c:if test="${notDoctor!=null }">
+							<a href="#">点击预约</a>
+						</c:if>
 					</div>
 				</c:if>
 				<c:if test="${editPage!=null }">

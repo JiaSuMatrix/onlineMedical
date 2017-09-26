@@ -278,4 +278,13 @@ public class UserController {
 		model.addAttribute("departments", departments);
 		return departments;
 	}
+	
+	//根据医生id查找医生
+	@RequestMapping("/findDoctorById.action")
+	public String  findDoctorById(Model model, String doctorId) throws Exception{
+		Doctor doctor = userService.findDoctorById(doctorId);
+		model.addAttribute("doctor", doctor);
+		model.addAttribute("notDoctor", "notDoctor");  //标识是否是医生本人访问医生个人中心页面
+		return "doctor";
+	}
 }

@@ -10,5 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM illness WHERE department_id = #{departmentId}
 	</select>
 	
+	
+	<!-- 根据疾病id查出疾病 -->
+	<select id="findIllnessById" parameterType="string" resultType="illness">
+		SELECT * FROM illness WHERE id = #{illnessId}
+	</select>
 </mapper>
 

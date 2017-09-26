@@ -26,7 +26,7 @@
 					<dl id="dl">
 						<dt class="dt">科室所有医生</dt>
 						<c:forEach var="doctor" items="${doctors }">
-							<dd class="dd"><a href="#">${doctor.username}</a></dd>
+							<dd class="dd"><a href="${pageContext.request.contextPath}/findDoctorById.action?doctorId=${doctor.id}">${doctor.username}</a></dd>
 						</c:forEach>
 					</dl>
 				</div>
@@ -34,7 +34,7 @@
 					<dl id="dl2">
 						<dt class="dt2">科室主治疾病</dt>
 						<c:forEach var="illness" items="${illnesses }">
-							<dd class="dd2"><a href="#">${illness.name}</a></dd>
+							<dd class="dd2"><a href="${pageContext.request.contextPath}/findIllnessById.action?illnessId=${illness.id}">${illness.name}</a></dd>
 						</c:forEach>
 					</dl>
 				</div>
